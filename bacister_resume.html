@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pretzel C. Bacister - Digital Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .header:hover {
+            transform: translateY(-5px);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 5px solid #667eea;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        .name {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: #667eea;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.1s; }
+        .section:nth-child(3) { animation-delay: 0.2s; }
+        .section:nth-child(4) { animation-delay: 0.3s; }
+        .section:nth-child(5) { animation-delay: 0.4s; }
+        .section:nth-child(6) { animation-delay: 0.5s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+        }
+
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: transform 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+        }
+
+        .award-item {
+            background: linear-gradient(45deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .community-item {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .reference-card {
+            text-align: center;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            bottom: 10%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape" style="width: 100px; height: 100px; background: #667eea; border-radius: 50%;"></div>
+        <div class="shape" style="width: 80px; height: 80px; background: #764ba2; border-radius: 30%;"></div>
+        <div class="shape" style="width: 120px; height: 120px; background: #667eea; clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <img src="bacister.jpg" alt="Pretzel Bacister" class="profile-img">
+            <h1 class="name">PRETZEL C. BACISTER</h1>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Brgy. Busay, Bago City, Neg. Occidental, 6101</span>
+                </div>
+                <div class="contact-item">
+                    <span>📞</span>
+                    <span>+6399397033928</span>
+                </div>
+                <div class="contact-item">
+                    <span>✉️</span>
+                    <span>pretzelbacister@gmail.com</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title">Career Overview</h2>
+            <p style="font-size: 1.1rem; text-align: center; color: #555; max-width: 800px; margin: 0 auto;">
+                Passionate about innovation, community leadership, and technology-driven solutions. 
+                Experienced in system development and analysis, with extensive background in event facilitation 
+                and youth leadership. Eager to contribute fresh ideas and dedication to an entry-level role.
+            </p>
+        </section>
+
+        <div class="grid">
+            <section class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="card">
+                    <h3>Bachelor of Science in Information Technology</h3>
+                    <p><strong>STI West Negros University</strong></p>
+                    <p>Class of 2026</p>
+                </div>
+                <div class="card" style="margin-top: 20px;">
+                    <h3>Science Technology Engineering Mathematics (STEM)</h3>
+                    <p><strong>Ramon Torres National High School</strong></p>
+                    <p>Class of 2022</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Featured Project</h2>
+                <div class="project-card">
+                    <h3>AI-Powered Resume Screening System</h3>
+                    <p><strong>STI West Negros University | 2026</strong></p>
+                    <p>Led the creation of an automated HR resume screening tool with applicant comparison and report generation capabilities as Project Manager.</p>
+                </div>
+            </section>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Technical Skills</h3>
+                    <div class="skills-container">
+                        <span class="skill-tag">Project Planning <small>(Strong)</small></span>
+                        <span class="skill-tag">Event Coordination <small>(Strong)</small></span>
+                        <span class="skill-tag">Research & Documentation <small>(Intermediate)</small></span>
+                        <span class="skill-tag">Computer Literacy <small>(Excellent)</small></span>
+                        <span class="skill-tag">MS Office <small>(Strong)</small></span>
+                        <span class="skill-tag">Google Workspace <small>(Strong)</small></span>
+                        <span class="skill-tag">Online Collaboration <small>(Strong)</small></span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Soft Skills</h3>
+                    <div class="skills-container">
+                        <span class="skill-tag">Leadership <small>(Excellent)</small></span>
+                        <span class="skill-tag">Teamwork <small>(Strong)</small></span>
+                        <span class="skill-tag">Communication <small>(Strong)</small></span>
+                        <span class="skill-tag">Problem-solving <small>(Strong)</small></span>
+                        <span class="skill-tag">Adaptability <small>(Excellent)</small></span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Tools & Software</h3>
+                    <div class="skills-container">
+                        <span class="skill-tag">Google Workspace <small>(Strong)</small></span>
+                        <span class="skill-tag">Microsoft Office Suite <small>(Strong)</small></span>
+                        <span class="skill-tag">Canva <small>(Strong)</small></span>
+                        <span class="skill-tag">Digital Design Tools <small>(Basic)</small></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Community Involvement</h2>
+            <div class="community-item">
+                <strong>SK Secretary</strong> - Purok Nipa <span style="float: right; color: #667eea; font-weight: 600;">2023 - Present</span>
+            </div>
+            <div class="community-item">
+                <strong>Treasurer</strong> - Programmers' Guild <span style="float: right; color: #667eea; font-weight: 600;">2023 - 2025</span>
+            </div>
+            <div class="community-item">
+                <strong>Volunteer</strong> - Kabataan Kontra Droga Organization <span style="float: right; color: #667eea; font-weight: 600;">2023 - Present</span>
+            </div>
+            <div class="community-item">
+                <strong>Volunteer</strong> - STI WNU Community Extension and Engagement Office <span style="float: right; color: #667eea; font-weight: 600;">2025 - 2026</span>
+            </div>
+            <div class="community-item">
+                <strong>CICT Representative</strong> - United Seniors' Organization <span style="float: right; color: #667eea; font-weight: 600;">2025 - 2026</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Awards & Recognition</h2>
+            <div class="award-item">
+                🏆 Outstanding Student Gold Awardee (2024-2025)
+            </div>
+            <div class="award-item">
+                🎓 Dean's List Awardee (2023-2024)
+            </div>
+            <div class="award-item">
+                🎓 Dean's List Awardee (2024-2025)
+            </div>
+            <div class="award-item">
+                🏅 Service Award (2024-2025)
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Reference</h2>
+            <div class="reference-card">
+                <h3>Rhyan C. De Loyola</h3>
+                <p><strong>Teacher | STI WNU</strong></p>
+                <p>📧 rhyandeloyola@gmail.com</p>
+                <p>📞 +639637757583</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Add smooth scrolling and interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click animation to skill tags
+            const skillTags = document.querySelectorAll('.skill-tag');
+            skillTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1.05)';
+                        setTimeout(() => {
+                            this.style.transform = 'scale(1)';
+                        }, 100);
+                    }, 100);
+                });
+            });
+
+            // Add parallax effect to floating shapes
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const shapes = document.querySelectorAll('.shape');
+                shapes.forEach((shape, index) => {
+                    const speed = 0.5 + (index * 0.1);
+                    shape.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            });
+
+            // Add hover effect to contact items
+            const contactItems = document.querySelectorAll('.contact-item');
+            contactItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05)';
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
